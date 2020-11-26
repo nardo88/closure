@@ -13,28 +13,32 @@ let isNumber = function(n){
 
 function getNumber (num){
     
-    return startGame = (numFromUser) => {
-        if (!isNumber(numFromUser)){
-            numFromUser = prompt('Введи число!')
-            numFromUser ? startGame(numFromUser) 
-                : alert('Игра окончена')
+    return startGame = () => {
+        // задаем вопрос
+        numFromUser = prompt('Введи число!') 
+        if (!numFromUser){
+            alert('Игра окончена')
+        } else if (!isNumber(numFromUser)){
+            startGame()
         } else if (numFromUser > num){
             alert('Загаданное число меньше')
-            numFromUser = prompt('Введи число!')
-            numFromUser ? startGame(numFromUser) : alert('Игра окончена')
+            startGame()
     
         } else if (numFromUser < num){
             alert('Загаданное число больше')
-            numFromUser = prompt('Введи число!')
-            numFromUser ? startGame(numFromUser) : alert('Игра окончена')
-        } else if (numFromUser = num){
+            startGame()
+        } else if (numFromUser == num){
             alert('Поздравляю, Вы угадали!!!')
         }
     }
     
 }
 
-const startGame1 = getNumber(50)
+// создаем число от 1 до 100
+let randomNumber = Math.floor(Math.random() * 100)
+// что бы угадать
+console.log(randomNumber);
 
-startGame(prompt('Угадай число от 1 до 100'))
+const startGame1 = getNumber(randomNumber)
+startGame1()
 
