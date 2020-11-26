@@ -16,18 +16,19 @@ function getNumber (num){
     return startGame = () => {
         // задаем вопрос
         numFromUser = prompt('Введи число!') 
-        if (!numFromUser){
+
+        if (numFromUser === null){
             alert('Игра окончена')
         } else if (!isNumber(numFromUser)){
             startGame()
-        } else if (numFromUser > num){
+        } else if (+numFromUser > num){
             alert('Загаданное число меньше')
             startGame()
     
-        } else if (numFromUser < num){
+        } else if (+numFromUser < num){
             alert('Загаданное число больше')
             startGame()
-        } else if (numFromUser == num){
+        } else if (+numFromUser === num){
             alert('Поздравляю, Вы угадали!!!')
         }
     }
