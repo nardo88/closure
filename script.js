@@ -60,6 +60,10 @@ function getNumber(num) {
 
 }
 
-const startGame1 = getNumber(50)
+// создаем число от 1 до 100
+let randomNumber = Math.floor(Math.random() * 100)
+// что бы угадать
+console.log(randomNumber);
 
-startGame()
+const startGame1 = getNumber(randomNumber)
+startGame1()
