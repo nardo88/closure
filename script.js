@@ -1,27 +1,14 @@
-// — спрашивает пользователя: "Угадай число от 1 до 100".
-// — если пользовательское число больше, то бот выводит "Загаданное число меньше" и предлагает ввести новый вариант;
-// — если пользовательское число меньше, то бот выводит "Загаданное число больше" и предлагает ввести новый вариант;
-// — если пользователь ввел не число, то выводит сообщение "Введи число!" и предлагает ввести новый вариант;
-// — если пользователь нажимает "Отмена", то игра заканчивается и выводится сообщение "Игра окончена".
-
-// —  если пользовательское число равно загаданному, то игра заканчивается и выводит сообщение  "Поздравляю, Вы угадали!!!".
-
 let isNumber = function (n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
 }
 
-
-function getNumber(num) {
-
+function getNumber() {
     // создаем счетчик
     let count = 3;
+    let num = Math.floor(Math.random() * 100);
+    console.log(num);
 
-    
-   
-    
-    return startGame = () => {
-
-        // создаем функцию проверки счетчика
+    function startGame() {
         function checkCount() {
             if (confirm('Попытки закончились, хотите попробовать еще раз?')) {
                 count = 3;
@@ -38,7 +25,7 @@ function getNumber(num) {
         } else if (!isNumber(numFromUser)) {
             startGame();
 
-        // если введенное число больше загаданного
+            // если введенное число больше загаданного
         } else if (+numFromUser > num) {
             count--;
             if (count === 0) {
@@ -47,7 +34,7 @@ function getNumber(num) {
                 alert('Загаданное число меньше у вас осталось ' + count + ' попыток');
                 startGame();
             }
-        // если введенное число меньше загаданного
+            // если введенное число меньше загаданного
         } else if (+numFromUser < num) {
             count--;
             if (count === 0) {
@@ -56,18 +43,18 @@ function getNumber(num) {
                 alert('Загаданное число больше у вас осталось ' + count + ' попыток');
                 startGame();
             }
-        // если число равно загаданному
+            // если число равно загаданному
         } else if (+numFromUser === num) {
             alert('Поздравляю, Вы угадали!!!');
+            if (confirm('Хотите попробовать еще раз?')) {
+                count = 3;
+                getNumber()
+            }
         }
     }
-
+    startGame()
 }
 
-// создаем число от 1 до 100
-let randomNumber = Math.floor(Math.random() * 100);
-// что бы угадать
-console.log(randomNumber);
+getNumber();
 
-const startGame1 = getNumber(randomNumber);
-startGame1();
+
