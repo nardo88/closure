@@ -23,8 +23,7 @@ function getNumber(num) {
         } else if (numFromUser > num) {
             count--
             if (count === 0) {
-                let again = confirm('Попытки закончились, хотите попробовать еще раз?')
-                if (again) {
+                if (confirm('Попытки закончились, хотите попробовать еще раз?')) {
                     count = 10
                     startGame()
             } {
@@ -40,8 +39,7 @@ function getNumber(num) {
     } else if (numFromUser < num) {
         count--
         if (count === 0) {
-            let again = confirm('Попытки закончились, хотите попробовать еще раз?')
-            if (again) {
+            if (confirm('Попытки закончились, хотите попробовать еще раз?')) {
                 count = 10
                 startGame()
             } {
