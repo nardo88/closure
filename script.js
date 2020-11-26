@@ -10,23 +10,38 @@ let isNumber = function(n){
     return !isNaN(parseFloat(n)) && isFinite(n)
 }
 
-
 function getNumber (num){
-    
+    let count = 10
     return startGame = (numFromUser) => {
-        if (!isNumber(numFromUser)){
+        if (!isNumber(numFromUser) ){
             numFromUser = prompt('Введи число!')
             numFromUser ? startGame(numFromUser) 
                 : alert('Игра окончена')
-        } else if (numFromUser > num){
-            alert('Загаданное число меньше')
-            numFromUser = prompt('Введи число!')
-            numFromUser ? startGame(numFromUser) : alert('Игра окончена')
-    
+        } else if (numFromUser > num ){
+            count--
+            alert('Загаданное число меньше, у вас осталось ' + count + ' попыток')
+            if (count === 0) {
+                alert('Попытки закончились')
+            } else {
+                numFromUser = prompt('Введи число!')
+                numFromUser ? startGame(numFromUser) : alert('Игра окончена')
+            }
         } else if (numFromUser < num){
-            alert('Загаданное число больше')
-            numFromUser = prompt('Введи число!')
-            numFromUser ? startGame(numFromUser) : alert('Игра окончена')
+            count--
+            alert('Загаданное число меньше, у вас осталось ' + count + ' попыток')
+            if (count === 0) {
+                let again = confirm('Попытки закончились, хотите попробовать еще раз?')
+                    if (again){
+                        count = 10
+                        startGame(prompt('Угадай число от 1 до 100'))
+                    }{
+                        return
+                    }
+                     
+            } else {
+                numFromUser = prompt('Введи число!')
+                numFromUser ? startGame(numFromUser) : alert('Игра окончена')
+            }
         } else if (numFromUser = num){
             alert('Поздравляю, Вы угадали!!!')
         }
